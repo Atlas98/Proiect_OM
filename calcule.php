@@ -1,6 +1,6 @@
 
 <?php
-
+	print_r($_POST);
 
 	$descriptorspec = array(
 	   0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
@@ -23,12 +23,38 @@
 	    // Any error output will be appended to /tmp/error-output.txt
 
 		//echo stream_get_contents($pipes[1]);
-		fwrite($pipes[0], "350");		// a
-		//$reply = stream_get_contents($pipes[1]);
-		//echo $reply;
-		//echo "<br>";
+		//fwrite($pipes[0], "350");		// a
+		//fwrite($pipes[0], )
+		$cs 			= $_POST['cs'];
+		$pv 			= $_POST['pv'];
+		$nv 			= $_POST['nv'];
+		$itct 			= $_POST['itct'];
+		$ir 			= $_POST['ir'];
+		$l 				= $_POST['l'];
+		$g 				= $_POST['g'];
+		$fm 			= $_POST['fm'];
+
+		$a 				= $_POST['a'];
+		$c 				= $_POST['c'];
+		$dp1 			= $_POST['dp1'];
+		$aprel 			= $_POST['aprel'];
+		$q 				= $_POST['q'];
+		$material 		= $_POST['material'];
+		$id_material 	= $_POST['id_material'];
+		$dca 			= $_POST['dca'];
+		$det 			= $_POST['det'];
+		$dr 			= $_POST['dr'];
+		$fa 			= $_POST['fa'];
+
+		//$write_str = $k . ' ' . $cs . ' ' . $pv . ' ' . $nv . ' ' . $itct . ' ' . $ir . ' ' . $l . ' ' . $g . ' ' . $fm . ' ' . $a . ' ' . $b . ' ' . $dp1 . ' ' . $aprel . ' ' . $q . ' ' . $material . ' ' . $id_material . ' ' . $dca . ' ' . $det . ' ' . $dr .$fa;
+		$write_str = $cs . ' ' . $pv . ' ' . $nv . ' ' . $itct . ' ' . $ir . ' ' . $l . ' ' . $g . ' ' . $fm . ' ' . $a . ' ' . $c . ' ' . $dp1 . ' ' . $aprel . ' ' . $q . ' ' . $material . ' ' . $id_material . ' ' . $dca . ' ' . $det . ' ' . $dr . ' ' . $fa;
+		echo $write_str;
+		echo "<br>";
 		
-		fwrite($pipes[0], "150 63 200 500 OL_50 0 20 24 30 100");
+		fwrite($pipes[0], $write_str);
+
+		//$write_str = "350 150 63 200 500 OL_50 0 20 24 30 100";
+		//fwrite($pipes[0], "350 150 63 200 500 OL_50 0 20 24 30 100");
 		/*
 		fwrite($pipes[0], "150");		// c
 		fwrite($pipes[0], "63");		// dp1
@@ -44,16 +70,13 @@
 
 	    fclose($pipes[0]);
 
-	    $return = stream_get_contents($pipes[1]);
-	    echo nl2br($return);
-	    fclose($pipes[1]);
-	    echo "reached here";
+	    $return = stream_get_contents($pipes[1]); 	// get response from process
+	    echo nl2br($return);	// nl2br = \n -> <br>     <br> = new line in html
+	    fclose($pipes[1]);	// close read stream
 
-	    // It is important that you close any pipes before calling
-	    // proc_close in order to avoid a deadlock
 	    $return_value = proc_close($process);
-
-	    echo "command returned $return_value\n";
+	    echo "<br>"; // new line
+	    echo "command returned $return_value<br>"; 	// for debugging purposes
 	}
 	
 
