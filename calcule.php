@@ -9,12 +9,12 @@
 	);
 
 	$cwd = null;
-	$env = array('PATH' => '/opt/lampp/htdocs/');
+	//$env = array('PATH' => '/opt/lampp/htdocs/');
 	//$cwd = '';
 	//$env = array('null'=>'null');
 
 	//$process = proc_open("/usr/bin/gdb -batch -x ./cmds ./AtlasTest >> debug.txt", $descriptorspec, $pipes, $cwd, $env);
-	$process = proc_open("./AtlasTest", $descriptorspec, $pipes, $cwd, $env);
+	$process = proc_open("./AtlasTest", $descriptorspec, $pipes, $cwd, null);
 
 	if (is_resource($process)) {
 	    // $pipes now looks like this:
