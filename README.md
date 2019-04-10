@@ -1,2 +1,4 @@
-# proiect_om
-Software created to compute some school Project
+# Proiect OM
+Software created to compute some school project
+
+This contains the interface code, the computational unit's code is closed source, for now(?).
