@@ -1,32 +1,101 @@
 <html>
 	<head>
 		<script type="text/javascript" src="calcule.js"></script>
+		<script type="text/javascript" src="stresser.js"></script>
+		<style type="text/css">
+			#wrapper {
+			   	width:100%;
+			   	margin:0 auto;
+			}
+			#part1 {
+			   	float:left;
+			   	width:30%;
+			}
+			#part2 {
+			   	float:right;
+			   	width:70%;
+			}
+		</style>
 	</head>
 	<body> 
-		Cs = <input type="text" id="cs" value="">	<br>
-		P_v = <input type="text" id="pv" value="">	<br>	
-		N_v = <input type="text" id="nv" value="">	<br>
-		Itct = <input type="text" id="itct" value=""><br>
-		Ir = <input type="text" id="ir" value="">	<br>
-		l = <input type="text" id="l" value="">	<br>
-		g = <input type="text" id="g" value="">	<br>
-		fm = <input type="text" id="fm" value="">	<br>
-		<br>
-		a = <input type="text" id="a" value="">	<br>
-		c = <input type="text" id="c" value="">	<br>
-		dp1 = <input type="text" id="dp1" value="">	<br>
-		aprel = <input type="text" id="aprel" value="">	<br>
-		q = <input type="text" id="q" value="">	<br>
-		material = <input type="text" id="material" value="">	<br>
-		id_material = <input type="text" id="id_material" value="">	<br>
-		dca = <input type="text" id="dca" value="">	<br>
-		det = <input type="text" id="det" value="">	<br>
-		dr = <input type="text" id="dr" value="">	<br>
-		fa = <input type="text" id="fa" value="">	<br>
-		<br>
+		<div id="wrapper">
+			<div id="part1" class="part1"> 
+				<button id="interactive-button" onclick="start_interactive()">interactive mode</button><br>
+				<!-- <button id="stresser-button" onclick="stress(10)">stress</button><br> -->
+				<p id="cs_box">
+					Cs = <input type="text" id="cs" value=""></p>
+				<p id="pv_box">
+					P_v = <input type="text" id="pv" value="">	</p>	
+				<p id="nv_box">
+					N_v = <input type="text" id="nv" value="">	</p>
+				<p id="itct_box">
+					Itct = <input type="text" id="itct" value=""></p>
+				<p id="ir_box">
+					Ir = <input type="text" id="ir" value="">	</p>
+				<p id="l_box">
+					l = <input type="text" id="l" value="">	</p>
+				<p id="g_box">
+					g = <input type="text" id="g" value="">	</p>
+				<p id="fm_box">
+					fm = <input type="text" id="fm" value="">	</p>
+				<br>
 
-		<button id="compute-button" onclick="compute()">compute</button>
-		
-		<p id="output"> </p>
+				<p id="a_box">
+					a = <input type="text" id="a" value="">	</p>
+				<p id="c_box">
+					c = <input type="text" id="c" value="">	</p>
+				<p id="dp1_box">
+					dp1 = <input type="text" id="dp1" value="">	</p>
+				<p id="aprel_box">
+					aprel = <input type="text" id="aprel" value="">	</p>
+				<p id="q_box">
+					q = <input type="text" id="q" value="">	</p>
+
+				<!-- <p id="material_box">material = <input type="text" id="material" value="">	</p>
+				<p id="id_material_box">id_material = <input type="text" id="id_material" value="">	</p>	-->
+
+				<p id="material_box">
+					Material: <select id="material" name="material" class="material_class">
+		            	<option value = "OL_42">OL 42</option>
+		            	<option value = "OL_50">OL 50</option>
+		            	<option value = "OL_60">OL 60</option>
+
+		            	<option value = "OLC_15">OLC 15</option>
+		            	<option value = "OLC_35">OLC 35</option>
+		            	<option value = "OLC_45">OLC 45</option>
+
+		            	<option value = "18_MoCr_10">18 MoCr 10</option>
+		            	<option value = "18_MoCrNi_20">18 MoCrNi 20</option>
+		            	<option value = "40_Cr_10">40 Cr 10</option>
+		            	<option value = "41_MoCr_11">41 MoCr 11</option>
+	         		</select>
+         		</p>
+
+         		<p id="id_material_box">
+	         		Tratement: <select id="id_material" name="id_material" class="id_material_class">
+	         			<option value ="0"> Nici unul </option>
+	         			<option value ="1"> Tratament de normalizare </option>
+	         			<option value ="2"> Tratament de cementare </option>
+	         			<option value ="3"> Tratament de imbunatatire </option>
+	         		</select>
+         		</p>
+
+				<p id="dca_box">
+					dca = <input type="text" id="dca" value="">	</p>
+				<p id="det_box">
+					det = <input type="text" id="det" value="">	</p>
+				<p id="dr_box">
+					dr = <input type="text" id="dr" value="">	</p>
+				<p id="fa_box">
+					fa = <input type="text" id="fa" value="">	</p>
+
+				<br>
+				<button id="compute-button" onclick="compute()">compute</button>
+			</div>
+			
+			<div id="part2" class="part2">
+				<p id="output"> </p>
+			</div>
+		</div>
 	</body>
 </html>
