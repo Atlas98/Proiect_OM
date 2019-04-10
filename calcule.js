@@ -1,3 +1,4 @@
+
 var interactive = 0;
 var started = 0;
 var show_base_values = 1;
@@ -13,6 +14,8 @@ var show_prompt_dca = 0;
 var show_prompt_det = 0;
 var show_prompt_dr = 0;
 var show_prompt_fa = 0;
+var show_prompt_Lp_a = 0;
+var show_prompt_Lp_b = 0;
 
 var show_response = 0;
 
@@ -88,20 +91,37 @@ function display_state(response) {
 	//console.log(interactives);
 	
 	if(show_response) {
-		toggle_field('fa_box', 0);
+		toggle_field('lp_b_box', 0);
 		toggle_field('compute-button', 0);
 		toggle_field('part1',0);
 		document.getElementById('part2').style.width = '100%';
-		for(var i = 12; i < split.length; i++) {
+		for(var i = 14; i < split.length; i++) {
 			output.innerHTML += split[i] + "<br>";
 		}
 		return;
 	}
+	if(show_prompt_Lp_b) {
+		//toggle_id('Lp_b_box');
+		output.innerHTML += split[13];
+		show_response = 1;	
+		show_prompt_Lp_b = 0;
 
+		toggle_field('lp_b_box', 1);
+		toggle_field('lp_a_box', 0);
+	}
+	if(show_prompt_Lp_a) {
+		//toggle_id('Lp_a_box');
+		output.innerHTML += split[12];
+		show_prompt_Lp_b = 1;	
+		show_prompt_Lp_a = 0;
+
+		toggle_field('lp_a_box', 1);
+		toggle_field('fa_box', 0);
+	}
 	if(show_prompt_fa) {
 		//toggle_id('fa_box');
 		output.innerHTML += split[11];
-		show_response = 1;	
+		show_prompt_Lp_a = 1;	
 		show_prompt_fa = 0;
 
 		toggle_field('fa_box', 1);
@@ -249,9 +269,11 @@ function compute() {
    	var det 		= getFieldValue('det');
    	var dr 			= getFieldValue('dr');
    	var fa 			= getFieldValue('fa'); 
+   	var lp_a 		= getFieldValue('lp_a');
+   	var lp_b 		= getFieldValue('lp_b');
 
     var requestString = "cs=" + cs + "&pv=" + pv + "&nv=" + nv + "&itct=" + itct + "&ir=" + ir + "&l=" + l + "&g=" + g + "&fm=" + fm + "&a=" + a + "&c=" + c
-     + "&dp1=" + dp1 + "&aprel=" + aprel + "&q=" + q + "&material=" + material + "&id_material=" + id_material + "&dca=" + dca + "&det=" + det + "&dr=" + dr + "&fa=" + fa;
+     + "&dp1=" + dp1 + "&aprel=" + aprel + "&q=" + q + "&material=" + material + "&id_material=" + id_material + "&dca=" + dca + "&det=" + det + "&dr=" + dr + "&fa=" + fa + "&lp_a=" + lp_a + "&lp_b=" + lp_b;
     request.send(requestString);
     console.log("Sent request: " + requestString);
 }
@@ -260,6 +282,8 @@ function compute() {
 function start_interactive() {
 	interactive = 1;
 	// hide others
+	toggle_id('source_code_box');
+
 	toggle_id('a_box');
 	toggle_id('c_box');
 	toggle_id('dp1_box');
@@ -271,6 +295,8 @@ function start_interactive() {
 	toggle_id('det_box');
 	toggle_id('dr_box');
 	toggle_id('fa_box');
+	toggle_id('lp_a_box');
+	toggle_id('lp_b_box');
 	toggle_id('interactive-button');
 }
 

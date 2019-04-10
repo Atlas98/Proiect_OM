@@ -1,4 +1,6 @@
+
 <?php
+	session_start();
 	//print_r($_POST);
 
 	$descriptorspec = array(
@@ -29,24 +31,26 @@
 		$nv 			= $_POST['nv'];
 		$itct 			= $_POST['itct'];
 		$ir 			= $_POST['ir'];
-		$l 			= $_POST['l'];
-		$g 			= $_POST['g'];
+		$l 				= $_POST['l'];
+		$g 				= $_POST['g'];
 		$fm 			= $_POST['fm'];
 
-		$a 			= $_POST['a'];
-		$c 			= $_POST['c'];
+		$a 				= $_POST['a'];
+		$c 				= $_POST['c'];
 		$dp1 			= $_POST['dp1'];
 		$aprel 			= $_POST['aprel'];
-		$q 			= $_POST['q'];
+		$q 				= $_POST['q'];
 		$material 		= $_POST['material'];
-		$id_material 		= $_POST['id_material'];
+		$id_material 	= $_POST['id_material'];
 		$dca 			= $_POST['dca'];
 		$det 			= $_POST['det'];
 		$dr 			= $_POST['dr'];
 		$fa 			= $_POST['fa'];
+		$lp_a			= $_POST['lp_a'];
+		$lp_b 			= $_POST['lp_b'];
 
 		//$write_str = $k . ' ' . $cs . ' ' . $pv . ' ' . $nv . ' ' . $itct . ' ' . $ir . ' ' . $l . ' ' . $g . ' ' . $fm . ' ' . $a . ' ' . $b . ' ' . $dp1 . ' ' . $aprel . ' ' . $q . ' ' . $material . ' ' . $id_material . ' ' . $dca . ' ' . $det . ' ' . $dr .$fa;
-		$write_str = $cs . ' ' . $pv . ' ' . $nv . ' ' . $itct . ' ' . $ir . ' ' . $l . ' ' . $g . ' ' . $fm . ' ' . $a . ' ' . $c . ' ' . $dp1 . ' ' . $aprel . ' ' . $q . ' ' . $material . ' ' . $id_material . ' ' . $dca . ' ' . $det . ' ' . $dr . ' ' . $fa;
+		$write_str = $cs . ' ' . $pv . ' ' . $nv . ' ' . $itct . ' ' . $ir . ' ' . $l . ' ' . $g . ' ' . $fm . ' ' . $a . ' ' . $c . ' ' . $dp1 . ' ' . $aprel . ' ' . $q . ' ' . $material . ' ' . $id_material . ' ' . $dca . ' ' . $det . ' ' . $dr . ' ' . $fa . ' ' . $lp_a . ' ' . $lp_b;
 		//echo $write_str;
 		//echo "<br>";
 		
