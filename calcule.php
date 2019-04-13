@@ -3,6 +3,8 @@
 	session_start();
 	//print_r($_POST);
 
+	
+
 	$descriptorspec = array(
 	   0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
 	   1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
@@ -45,12 +47,14 @@
 		$dca 			= $_POST['dca'];
 		$det 			= $_POST['det'];
 		$dr 			= $_POST['dr'];
+		$dperii			= $_POST['dperii'];
+		$drotor 		= $_POST['drotor'];
+		$dumar 			= $_POST['dumar'];
 		$fa 			= $_POST['fa'];
 		$lp_a			= $_POST['lp_a'];
 		$lp_b 			= $_POST['lp_b'];
 
-		//$write_str = $k . ' ' . $cs . ' ' . $pv . ' ' . $nv . ' ' . $itct . ' ' . $ir . ' ' . $l . ' ' . $g . ' ' . $fm . ' ' . $a . ' ' . $b . ' ' . $dp1 . ' ' . $aprel . ' ' . $q . ' ' . $material . ' ' . $id_material . ' ' . $dca . ' ' . $det . ' ' . $dr .$fa;
-		$write_str = $cs . ' ' . $pv . ' ' . $nv . ' ' . $itct . ' ' . $ir . ' ' . $l . ' ' . $g . ' ' . $fm . ' ' . $a . ' ' . $c . ' ' . $dp1 . ' ' . $aprel . ' ' . $q . ' ' . $material . ' ' . $id_material . ' ' . $dca . ' ' . $det . ' ' . $dr . ' ' . $fa . ' ' . $lp_a . ' ' . $lp_b;
+		$write_str = $cs . ' ' . $pv . ' ' . $nv . ' ' . $itct . ' ' . $ir . ' ' . $l . ' ' . $g . ' ' . $fm . ' ' . $a . ' ' . $c . ' ' . $dp1 . ' ' . $aprel . ' ' . $q . ' ' . $material . ' ' . $id_material . ' ' . $dca . ' ' . $det . ' ' . $dr . ' ' . $dperii . ' ' . $drotor . ' ' . $dumar . ' ' . $fa . ' ' . $lp_a . ' ' . $lp_b;
 		//echo $write_str;
 		//echo "<br>";
 		

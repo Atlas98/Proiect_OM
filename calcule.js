@@ -51,24 +51,6 @@ function display_state(response) {
 
 	var interactives_string =  split[0];	// filter out garbage from the first split
 	var response = split[1];	// the response variable, with all the results
-	//output.innerHTML += "Interactives are: " + interactives_string;
-	//output.innerHTML += "<br>";
-	//output.innerHTML += "Response is: " + response;
-
-
-	// split[0] = "Loading application...";
-	// split[1] = "Prompt a";
-	// split[2] = "Prompt c";
-	// split[3] = "Prompt dp1";
-	// split[4] = "Prompt aprel";
-	// split[5] = "Prompt Q";
-	// split[6] = "Prompt simbol";
-	// split[7] = "Prompt tratament";
-	// split[8] = "Prompt dca";
-	// split[9] = "Prompt det";
-	// split[10] = "Prompt dr";
-	// split[11] = "Prompt fa";
-
 
 	if(show_base_values == 1) {
 		show_base_values = 0;
@@ -86,23 +68,20 @@ function display_state(response) {
 		started = 1;
 		show_prompt_a = 1;
 	}
-
-	//var interactives = interactives_string.split("<br />");
-	//console.log(interactives);
 	
 	if(show_response) {
 		toggle_field('lp_b_box', 0);
 		toggle_field('compute-button', 0);
 		toggle_field('part1',0);
 		document.getElementById('part2').style.width = '100%';
-		for(var i = 14; i < split.length; i++) {
+		for(var i = 17; i < split.length; i++) {
 			output.innerHTML += split[i] + "<br>";
 		}
 		return;
 	}
 	if(show_prompt_Lp_b) {
 		//toggle_id('Lp_b_box');
-		output.innerHTML += split[13];
+		output.innerHTML += split[16];
 		show_response = 1;	
 		show_prompt_Lp_b = 0;
 
@@ -111,7 +90,7 @@ function display_state(response) {
 	}
 	if(show_prompt_Lp_a) {
 		//toggle_id('Lp_a_box');
-		output.innerHTML += split[12];
+		output.innerHTML += split[15];
 		show_prompt_Lp_b = 1;	
 		show_prompt_Lp_a = 0;
 
@@ -120,11 +99,35 @@ function display_state(response) {
 	}
 	if(show_prompt_fa) {
 		//toggle_id('fa_box');
-		output.innerHTML += split[11];
+		output.innerHTML += split[14];
 		show_prompt_Lp_a = 1;	
 		show_prompt_fa = 0;
 
 		toggle_field('fa_box', 1);
+		toggle_field('dr_box', 0);
+	}
+	if(show_prompt_dumar) {
+		show_prompt_dumar = 0;
+		show_prompt_fa = 1;
+
+		output.innerHTML += split[13];
+		toggle_field('dumar_box', 1);
+		toggle_field('drotor_box', 0);
+	}
+	if(show_prompt_drotor) {
+		show_prompt_drotor = 0;
+		show_prompt_dumar = 1;
+
+		output.innerHTML += split[12];
+		toggle_field('drotor_box', 1);
+		toggle_field('dperii_box', 0);
+	}
+	if(show_prompt_dperii) {
+		show_prompt_dperii = 0;
+		show_prompt_drotor = 1;
+
+		output.innerHTML += split[11];
+		toggle_field('dperii_box', 1);
 		toggle_field('dr_box', 0);
 	}
 	if(show_prompt_dr) {
@@ -267,13 +270,16 @@ function compute() {
    	var id_material = getFieldValue('id_material');
    	var dca 		= getFieldValue('dca');
    	var det 		= getFieldValue('det');
+   	var dperii 		= getFieldValue('dperii');
+   	var drotor 		= getFieldValue('drotor');
+   	var dumar 		= getFieldValue('dumar');
    	var dr 			= getFieldValue('dr');
    	var fa 			= getFieldValue('fa'); 
    	var lp_a 		= getFieldValue('lp_a');
    	var lp_b 		= getFieldValue('lp_b');
 
     var requestString = "cs=" + cs + "&pv=" + pv + "&nv=" + nv + "&itct=" + itct + "&ir=" + ir + "&l=" + l + "&g=" + g + "&fm=" + fm + "&a=" + a + "&c=" + c
-     + "&dp1=" + dp1 + "&aprel=" + aprel + "&q=" + q + "&material=" + material + "&id_material=" + id_material + "&dca=" + dca + "&det=" + det + "&dr=" + dr + "&fa=" + fa + "&lp_a=" + lp_a + "&lp_b=" + lp_b;
+     + "&dp1=" + dp1 + "&aprel=" + aprel + "&q=" + q + "&material=" + material + "&id_material=" + id_material + "&dca=" + dca + "&det=" + det + "&dr=" + dr + "&dperii=" + dperii + "&drotor=" + drotor + "&dumar=" + dumar + "&fa=" + fa + "&lp_a=" + lp_a + "&lp_b=" + lp_b;
     request.send(requestString);
     console.log("Sent request: " + requestString);
 }
@@ -293,6 +299,9 @@ function start_interactive() {
 	toggle_id('id_material_box');
 	toggle_id('dca_box');
 	toggle_id('det_box');
+	toggle_id('dperii_box');
+	toggle_id('drotor_box');
+	toggle_id('dumar_box');
 	toggle_id('dr_box');
 	toggle_id('fa_box');
 	toggle_id('lp_a_box');
